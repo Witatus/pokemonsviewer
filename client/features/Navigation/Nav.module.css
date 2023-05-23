@@ -1,0 +1,10 @@
+.appLayout {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100%;
+}
