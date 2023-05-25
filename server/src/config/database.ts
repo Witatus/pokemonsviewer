@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Pokemon } from "../models/pokemons";
 import { User } from "../models/user";
+import { BlacklistedToken } from "../models/auth";
 
 export const connectToDatabase = async (url: string) => {
   try {
@@ -13,7 +14,8 @@ export const connectToDatabase = async (url: string) => {
 
 export const createCollections = async () => {
   const collectionNames = Object.keys(mongoose.connection.collections);
-
+  console.log("collectionNames", collectionNames)
+  
   if (!collectionNames.includes("pokemonsCollection")) {
     await Pokemon.init();
   }
@@ -21,10 +23,15 @@ export const createCollections = async () => {
   if (!collectionNames.includes("usersCollection")) {
     await User.init();
   }
+
+  if (!collectionNames.includes("blacklistedTokensCollection")) {
+    await BlacklistedToken.init();
+  }
 };
 
 
 export const setupDatabase = async (url: string) => {
+  console.log("db url", url)
   await connectToDatabase(url);
   await createCollections();
 };

@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
           password: credentials!.password,
         }
 
-        const res = await fetch('http://localhost:5000/api/auth/login', {
+        const res = await fetch(process.env.API_BASE_URL + "/api/auth/login", {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" }
@@ -66,7 +66,7 @@ export const authOptions: NextAuthOptions = {
       if (account && user) {
         const accessToken = user.accessToken;
         
-        const isNotBlacklisted = await fetch("http://localhost:5000/api/auth/blacklist", {
+        const isNotBlacklisted = await fetch(process.env.API_BASE_URL + "api/auth/blacklist", {
           method: "GET",
           headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${accessToken}` },

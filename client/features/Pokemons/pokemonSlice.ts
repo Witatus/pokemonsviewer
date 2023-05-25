@@ -10,7 +10,7 @@ function buildUrl(
 ): string {
   const url = new URL(base);
   Object.entries(params).forEach(([key, value]) => {
-    if (key === 'filters' && Array.isArray(value)) {
+    if (key === "filters" && Array.isArray(value)) {
       value.forEach((filter, index) => {
         url.searchParams.append(key, filter);
       });
@@ -41,10 +41,10 @@ export const fetchPokemons = createAsyncThunk.withTypes<{
     if (loading !== "pending") {
       return;
     }
-    payload.params = {...defaultParams, ...payload.params};
+    payload.params = { ...defaultParams, ...payload.params };
 
     const url = buildUrl(
-      "http://localhost:5000/api/pokemons/filterSort",
+      process.env.API_BASE_URL + "/api/pokemons/filterSort",
       payload.params,
       thunkAPI.getState().numberOfPokemonsFetched
     );
@@ -52,7 +52,7 @@ export const fetchPokemons = createAsyncThunk.withTypes<{
     const response = await fetch(url);
     const data = await response.json();
 
-    return { output: data};
+    return { output: data };
   }
 );
 
@@ -66,7 +66,9 @@ export const fetchSearchedPokemons = createAsyncThunk.withTypes<{
     if (loading !== "pending") {
       return;
     }
-    const response = await fetch(`http://localhost:5000/api/pokemons/search/${payload.searchTerm}`);
+    const response = await fetch(process.env.API_BASE_URL + 
+      `/api/pokemons/search/${payload.searchTerm}`
+    );
     const data = await response.json();
 
     return { output: data };

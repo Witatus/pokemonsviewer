@@ -19,7 +19,7 @@ app.use(express.json());
 initializePassport(passport);
 app.use(passport.initialize());
 
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', process.env.FRONTEND_URL]
 
 app.options('*', cors());
 

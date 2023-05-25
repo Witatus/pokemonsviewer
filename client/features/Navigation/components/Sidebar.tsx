@@ -46,7 +46,7 @@ const Sidebar: React.FC = () => {
 
   const userSignOut = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/logout", {
+      const res = await fetch(process.env.API_BASE_URL + "/api/auth/logout", {
         method: "GET",
         headers: {
           Authorization: "Bearer " + session?.user?.accessToken,
