@@ -1,4 +1,4 @@
-import { ElementType } from "../models/pokemons";
+import { ElementType } from "../types/pokemonTypes";
 import {Pokemon} from "../models/pokemons";
 
 type PokemonType = {
