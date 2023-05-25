@@ -1,0 +1,24 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ElementType = void 0;
+var ElementType;
+(function (ElementType) {
+    ElementType["Normal"] = "Normal";
+    ElementType["Fire"] = "Fire";
+    ElementType["Water"] = "Water";
+    ElementType["Grass"] = "Grass";
+    ElementType["Flying"] = "Flying";
+    ElementType["Fighting"] = "Fighting";
+    ElementType["Poison"] = "Poison";
+    ElementType["Electric"] = "Electric";
+    ElementType["Ground"] = "Ground";
+    ElementType["Rock"] = "Rock";
+    ElementType["Psychic"] = "Psychic";
+    ElementType["Ice"] = "Ice";
+    ElementType["Bug"] = "Bug";
+    ElementType["Ghost"] = "Ghost";
+    ElementType["Steel"] = "Steel";
+    ElementType["Dragon"] = "Dragon";
+    ElementType["Dark"] = "Dark";
+    ElementType["Fairy"] = "Fairy";
+})(ElementType = exports.ElementType || (exports.ElementType = {}));
