@@ -66,7 +66,7 @@ export const authOptions: NextAuthOptions = {
       if (account && user) {
         const accessToken = user.accessToken;
         
-        const isNotBlacklisted = await fetch(process.env.API_BASE_URL + "api/auth/blacklist", {
+        const isNotBlacklisted = await fetch(process.env.API_BASE_URL + "/api/auth/blacklist", {
           method: "GET",
           headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${accessToken}` },
