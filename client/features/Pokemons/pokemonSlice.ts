@@ -36,16 +36,14 @@ export const fetchPokemons = createAsyncThunk.withTypes<{
 }>()(
   "pokemons/fetchPokemons",
   async (payload: { params?: Params } = {}, thunkAPI) => {
-    // console.log("payload params", payload.params)
     const loading = thunkAPI.getState().loading;
     if (loading !== "pending") {
       return;
     }
     payload.params = { ...defaultParams, ...payload.params };
 
-    console.log("thunk url",process.env.API_BASE_URL + "/api/pokemons/filterSort" )
     const url = buildUrl(
-      process.env.API_BASE_URL + "/api/pokemons/filterSort",
+      process.env.NEXT_PUBLIC_API_BASE_URL + "/api/pokemons/filterSort",
       payload.params,
       thunkAPI.getState().numberOfPokemonsFetched
     );
@@ -67,9 +65,8 @@ export const fetchSearchedPokemons = createAsyncThunk.withTypes<{
     if (loading !== "pending") {
       return;
     }
-    console.log("thunk url",process.env.API_BASE_URL + `/api/pokemons/search/${payload.searchTerm}`)
 
-    const response = await fetch(process.env.API_BASE_URL + 
+    const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + 
       `/api/pokemons/search/${payload.searchTerm}`
     );
     const data = await response.json();

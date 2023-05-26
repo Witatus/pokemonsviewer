@@ -37,7 +37,7 @@ export default function SignUp({ csrfToken }: any) {
 
     console.log(payload);
     try {
-      const res = await fetch(process.env.API_BASE_URL + "/api/auth/signup", {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/api/auth/signup", {
         method: "POST",
         body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
