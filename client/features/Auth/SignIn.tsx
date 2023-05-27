@@ -30,7 +30,6 @@ export default function SignIn() {
         password: data.get("password"),
         callbackUrl: `${window.location.origin}`,
       })
-      console.log("res", res)
     } catch (error) {
       console.log(error);
     }
@@ -38,14 +37,12 @@ export default function SignIn() {
 
   const handleDefaultUserSubmit = async () => {
     try {
-      console.log("origin", window.location.origin)
       const res = await signIn('credentials', {
         redirect: true,
         username: "user1",
         password: "password1",
         callbackUrl: `${window.location.origin}`,
       })
-      console.log("res", res)
     } catch (error) {
       console.log(error);
     }

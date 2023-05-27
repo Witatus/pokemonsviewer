@@ -6,7 +6,7 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import useDebounce from "../../hooks/useDebounce";
-import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
+import { useAppDispatch } from "../../hooks/reduxHooks";
 import {
   fetchSearchedPokemons,
   fetchPokemons,
@@ -73,7 +73,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ setSearchParams  }) => {
       dispatch(fetchSearchedPokemons({ searchTerm: debouncedSearchTerm }));
     }
     if (debouncedSearchTerm === "") {
-      // console.log("dupaaaaaaaaa");
       dispatch(resetState());
       dispatch(fetchPokemons({}));
     }

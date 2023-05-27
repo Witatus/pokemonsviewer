@@ -66,6 +66,7 @@ export const fetchSearchedPokemons = createAsyncThunk.withTypes<{
       return;
     }
 
+
     const response = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + 
       `/api/pokemons/search/${payload.searchTerm}`
     );

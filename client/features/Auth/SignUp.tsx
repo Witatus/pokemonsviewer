@@ -14,10 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useRouter } from "next/router";
 import {
-  getProviders,
   signIn,
-  getSession,
-  getCsrfToken,
 } from "next-auth/react";
 
 const theme = createTheme();
@@ -35,7 +32,6 @@ export default function SignUp({ csrfToken }: any) {
       password: data.get("password"),
     };
 
-    console.log(payload);
     try {
       const res = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL + "/api/auth/signup", {
         method: "POST",
