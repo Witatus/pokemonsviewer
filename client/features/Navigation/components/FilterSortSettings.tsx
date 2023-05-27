@@ -11,7 +11,7 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
-import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
+import { useAppDispatch } from "../../hooks/reduxHooks";
 import { fetchPokemons, resetState } from "../../Pokemons/pokemonSlice";
 import { FilterSortSettings } from "../../../types/PokemonsTypes";
 import { SelectChangeEvent } from "@mui/material/Select";
@@ -66,7 +66,6 @@ const FilterSortSettings: React.FC<FilterSortSettings> = ({
   ) => {
     setRequireAll(event.target.checked);
   };
-
 
   return (
     <Box sx={{ mt: 2, p: 2 }}>
