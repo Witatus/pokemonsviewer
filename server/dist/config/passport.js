@@ -24,7 +24,6 @@ const initializePassport = (passport) => {
             const user = await user_1.User.findOne({
                 name: jwtPayload.name,
             });
-            console.log("user", user);
             if (user) {
                 req.body.role = user.role;
                 return done(null, user);

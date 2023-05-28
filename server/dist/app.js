@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import { fetchOriginalPokemons } from "./utils/populateDb";
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const express_1 = __importDefault(require("express"));
@@ -19,7 +20,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 (0, passport_1.default)(passport_2.default);
 app.use(passport_2.default.initialize());
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['http://localhost:3000', process.env.FRONTEND_URL];
 app.options('*', (0, cors_1.default)());
 const corsOptions = {
     credentials: true,
@@ -28,6 +29,7 @@ const corsOptions = {
             callback(null, true);
         }
         else {
+            console.log(origin);
             callback(new Error('Not allowed by CORS'));
         }
     },

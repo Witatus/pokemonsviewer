@@ -10,7 +10,6 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const deep_email_validator_1 = __importDefault(require("deep-email-validator"));
 const jwt_decode_1 = __importDefault(require("jwt-decode"));
 const signUpUser = async (req, res) => {
-    console.log(req.body);
     try {
         const existingUser = await user_1.User.findOne({
             name: req.body.name,
@@ -108,7 +107,6 @@ const loginUser = async (req, res) => {
 };
 exports.loginUser = loginUser;
 const logoutUser = async (req, res) => {
-    console.log("logging out");
     try {
         if (req.headers.authorization) {
             const extractedToken = req.headers.authorization.split(" ")[1];
@@ -134,11 +132,9 @@ const logoutUser = async (req, res) => {
 exports.logoutUser = logoutUser;
 const checkIfTokenIsBlacklisted = async (req, res) => {
     try {
-        console.log(req.body);
         const blacklistedToken = await auth_1.BlacklistedToken.findOne({
             token: req.body.token,
         });
-        console.log(blacklistedToken);
         if (blacklistedToken) {
             return res.status(401).send("Token is blacklisted");
         }

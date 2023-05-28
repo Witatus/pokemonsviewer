@@ -7,6 +7,7 @@ exports.setupDatabase = exports.createCollections = exports.connectToDatabase = 
 const mongoose_1 = __importDefault(require("mongoose"));
 const pokemons_1 = require("../models/pokemons");
 const user_1 = require("../models/user");
+const auth_1 = require("../models/auth");
 const connectToDatabase = async (url) => {
     try {
         await mongoose_1.default.connect(url);
@@ -24,6 +25,9 @@ const createCollections = async () => {
     }
     if (!collectionNames.includes("usersCollection")) {
         await user_1.User.init();
+    }
+    if (!collectionNames.includes("blacklistedTokensCollection")) {
+        await auth_1.BlacklistedToken.init();
     }
 };
 exports.createCollections = createCollections;
