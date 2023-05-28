@@ -6,7 +6,6 @@ import emailValidator from "deep-email-validator";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 
 export const signUpUser = async (req: Request, res: Response) => {
-  console.log(req.body);
   try {
     const existingUser = await User.findOne({
       name: req.body.name,
@@ -77,8 +76,6 @@ export const deleteUser = async (req: Request, res: Response) => {
 };
 
 export const loginUser = async (req: Request, res: Response) => {
-  console.log("cipa", req);
-  console.log("dupa", req.body);
   try {
     const { name, password } = req.body;
 
@@ -114,7 +111,6 @@ export const loginUser = async (req: Request, res: Response) => {
 };
 
 export const logoutUser = async (req: Request, res: Response) => {
-  console.log("logging out");
   try {
     if (req.headers.authorization) {
       const extractedToken = req.headers.authorization.split(" ")[1];
@@ -143,11 +139,9 @@ export const checkIfTokenIsBlacklisted = async (
   res: Response
 ) => {
   try {
-    console.log(req.body);
     const blacklistedToken = await BlacklistedToken.findOne({
       token: req.body.token,
     });
-    console.log(blacklistedToken);
     if (blacklistedToken) {
       return res.status(401).send("Token is blacklisted");
     } else {

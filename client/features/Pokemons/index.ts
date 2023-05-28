@@ -1,1 +1,1 @@
-export * from './PokemonsFacade';
+export * from './components/PokemonsFacade';

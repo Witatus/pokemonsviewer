@@ -81,8 +81,6 @@ const deleteUser = async (req, res) => {
 };
 exports.deleteUser = deleteUser;
 const loginUser = async (req, res) => {
-    console.log("cipa", req);
-    console.log("dupa", req.body);
     try {
         const { name, password } = req.body;
         const user = await user_1.User.findOne({ name });

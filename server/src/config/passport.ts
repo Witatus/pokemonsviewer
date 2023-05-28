@@ -5,8 +5,8 @@ import {
 } from "passport-jwt";
 import { PassportStatic } from "passport";
 import { IUser, User } from "../models/user";
-import { Request, Response, NextFunction } from "express";
-import { BlacklistedToken, IBlacklistedToken } from "../models/auth";
+import { Request, } from "express";
+import { BlacklistedToken,  } from "../models/auth";
 
 export const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -35,7 +35,6 @@ const initializePassport = (passport: PassportStatic) => {
             name: jwtPayload.name,
           });
 
-          console.log("user", user)
           if (user) {
             req.body.role = user.role;
             return done(null, user);

@@ -1,12 +1,12 @@
 import React from "react";
-import type { PokemonType } from "../../types/PokemonsTypes";
-import { fetchPokemons, selectAllPokemons } from "./pokemonSlice";
+import type { PokemonType } from "../../../types/PokemonsTypes";
+import { fetchPokemons, selectAllPokemons } from "../pokemonSlice";
 import { BottomScrollListener } from "react-bottom-scroll-listener";
 import Grid from "@mui/material/Grid";
-import PokemonOverviewCard from "./components/PokemonOverviewCard";
-import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks";
-import { PokemonsFacadeProps } from "../../types/PokemonsTypes";
-import Loading from "../Utils/Loading";
+import PokemonOverviewCard from "./PokemonOverviewCard";
+import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
+import { PokemonsFacadeProps } from "../../../types/PokemonsTypes";
+import Loading from "../../Utils/Loading";
 
 export const PokemonsFacade: React.FC<PokemonsFacadeProps> = ({
   searchParams,

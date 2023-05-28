@@ -16,7 +16,7 @@ import cx from "classnames";
 
 const { styl } = styles;
 
-export default function PokemonOverviewCard({ name }: {name : string}) {
+export default function PokemonOverviewCard({ name }: { name: string }) {
   function GetPokemonDetail(name: string) {
     const pokemonDetails = useSelector((state) =>
       selectSpecificPokemon(state, name)
@@ -34,7 +34,8 @@ export default function PokemonOverviewCard({ name }: {name : string}) {
       boxShadow: `0 8px 16px rgba(0, 0, 255, .2)`,
       transform: "scale(1.1) translateY(-50px)",
     },
-    maxWidth: 345,
+    width: 345,
+    height: 450,
     border: 1,
     borderRadius: "16px",
   }));
@@ -42,8 +43,11 @@ export default function PokemonOverviewCard({ name }: {name : string}) {
 
   return (
     <div className={cx(styl)}>
-      <OverviewCard >
-        <CardActionArea onClick={() => router.push(`${name}`)}>
+      <OverviewCard>
+        <CardActionArea
+          sx={{ width: 345, height: 450 }}
+          onClick={() => router.push(`${name}`)}
+        >
           <CardMedia
             component="img"
             alt={name}
@@ -52,16 +56,20 @@ export default function PokemonOverviewCard({ name }: {name : string}) {
             src={pokemon[0].sprite_front_default}
             sx={{ objectFit: "contain" }}
           />
-          <CardContent>
+          <CardContent sx={{ display: "flex", flexDirection: "column" }}>
             <Typography gutterBottom variant="h5" component="div">
               {name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ flexGrow: 1 }}
+            >
               {pokemon[0].description}
             </Typography>
           </CardContent>
           <CardActions sx={{ justifyContent: "center" }}>
-            <Link href={"pokemons/" + name}>
+            <Link href={name}>
               <Button size="small">Go to pokemon page</Button>
             </Link>
           </CardActions>

@@ -14,7 +14,6 @@ export const connectToDatabase = async (url: string) => {
 
 export const createCollections = async () => {
   const collectionNames = Object.keys(mongoose.connection.collections);
-  console.log("collectionNames", collectionNames)
   
   if (!collectionNames.includes("pokemonsCollection")) {
     await Pokemon.init();

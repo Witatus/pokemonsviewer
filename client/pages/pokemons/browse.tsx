@@ -1,5 +1,5 @@
 import React from 'react';
-import {PokemonsFacade} from "@/features/Pokemons/PokemonsFacade";
+import {PokemonsFacade} from "@/features/Pokemons/components/PokemonsFacade";
 import { Box, Toolbar } from "@mui/material";
 import Sidebar from "@/features/Navigation/components/Sidebar";
 import SearchBar from "@/features/Navigation/components/SearchBar";
