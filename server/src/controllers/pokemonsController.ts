@@ -51,7 +51,6 @@ export const getPokemonByNameOrId = async (req: Request, res: Response) => {
 
 export const getPokemonsByTerm = async (req: Request, res: Response) => {
   try {
-    console.log(("^" + req.params.searchTerm) as string);
     const pokemons = await Pokemon.find({
       name: new RegExp(("^" + req.params.searchTerm) as string, "i"),
     });
@@ -119,7 +118,6 @@ export const getPokemonsByFiltersAndSort = async (
   }
 
   try {
-    console.log("sortField", sortBy, "sortValue", sortValue)
     const pokemons = await Pokemon.find(query)
       .skip(alreadyFetched)
       .sort({ [sortBy]: sortValue })

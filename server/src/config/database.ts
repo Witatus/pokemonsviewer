@@ -30,7 +30,6 @@ export const createCollections = async () => {
 
 
 export const setupDatabase = async (url: string) => {
-  console.log("db url", url)
   await connectToDatabase(url);
   await createCollections();
 };
